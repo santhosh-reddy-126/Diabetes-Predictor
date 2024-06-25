@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body{
+            background-color: #A7E6FF;
+        }
+        h1{
+            text-align: left;
+            animation: c1 3s ease-in 0s infinite alternate;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 20px;
+        }
+        label{
+            color: #050C9C;
+            font-size: 25px;
+            padding-right: 20px;
+        }
+        input{
+            border: none;
+            background-color: #bc92ed ;
+            color: #050C9C;
+            width: 420px;
+            height: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        @keyframes c1{
+            0%{
+                color: #3ABEF9;
+            }
+            50%{
+                color: #3572EF;
+            }
+            100%{
+                color: #050C9C;
+            }
+        }
+        form{
+            padding: 20px;
+            
+        }
+        .inputs{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        button{
+            width: 330px;
+            height: 40px;
+            font-size: 25px;
+            background-color:  #bc92ed;
+            border: 0px;
+            border-radius: 20px;
+            color: #050C9C;
+            font-weight: 600;
+        }
+        .buttons{
+            display: flex;
+            justify-content: center;
+        }
+        .output{
+            display: flex;
+            justify-content: center;
+        }
+        h2{
+            color: #050C9C;
+            font-weight: 900;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Predictor</h1>
+    <form method="post" action="/predict">
+        <div class="inputs">
+        <input type="text" id="preg" name="preg" placeholder="No of Pregnancies" autocomplete="off">
+        <input type="text" id="Glucose" name="Glucose" placeholder="Glucose" autocomplete="off">
+        <input type="text" id="BP" name="BP" placeholder="Blood Pressure" autocomplete="off">
+        <input type="text" id="st" name="st" placeholder="Skin Thickness(mm)" autocomplete="off">
+        <input type="text" id="Is" name="Is" placeholder="Insulin" autocomplete="off">
+        <input type="text" id="BMI" name="BMI" placeholder="BMI" autocomplete="off">
+        <input type="text" id="dpf" name="dpf" placeholder="Diabetes Pedigree Function(0.05-2.5)" autocomplete="off">
+        <input type="text" id="age" name="age" placeholder="Age" autocomplete="off">
+        </div><br/>
+        <div class="buttons">
+            
+        <button>Submit</button>
+        </div>
+    </form><br><br>
+    <div class="output">
+        {% if error: %}
+            <h2>{{error}}</h2>
+        {% endif %}
+        {% if pred: %}
+            <h2>Result:{{pred}}</h2>
+        {% endif %}
+    </div>
+    
+</body>
+</html>
